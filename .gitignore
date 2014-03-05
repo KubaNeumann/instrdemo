@@ -1,0 +1,20 @@
+*target*
+*.jar
+*.war
+*.ear
+*.class
+
+# eclipse specific git ignore
+.metadata
+bin/**
+*.tmp
+*.bak
+*.swp
+*~.nib
+.settings/
+.loadpath
+.classpath
+.project
+
+# External tool builders
+.externalToolBuilders/
