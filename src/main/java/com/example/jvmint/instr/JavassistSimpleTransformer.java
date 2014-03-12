@@ -22,9 +22,14 @@ public class JavassistSimpleTransformer implements ClassFileTransformer {
 
 				ClassPool cp = ClassPool.getDefault();
 				CtClass ctClazz = cp.get(dotClassName);
+				
 				CtMethod method1 = ctClazz.getDeclaredMethod("doSomething");
+				
+				method1.addLocalVariable("elapsedTime", CtClass.longType);
 
-				method1.insertBefore("{System.out.println(\"Calling doSomething() ... \");}");
+				method1.insertBefore("elapsedTime = System.currentTimeMillis();");
+				method1.insertAfter(" { elapsedTime = System.currentTimeMillis() - elapsedTime; "
+				+ "System.out.println(\" Method elapsedTime = \" + elapsedTime);}");
 				result = ctClazz.toBytecode();
 			}
 

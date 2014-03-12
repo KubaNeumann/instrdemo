@@ -8,6 +8,12 @@ public class Class2 implements SomeService{
 
 	public void doSomething() {
 		System.out.println("Method from Class2");
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
